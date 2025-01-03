@@ -12,6 +12,71 @@
     </xs:complexType>
   </xs:element>
 
+  <!-- Template Parameter -->
+  <xs:element name="template-parameter">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="name" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+    <!-- Class -->
+  <xs:element name="class" maxOccurs="unbounded" minOccurs="0">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="variable">
+          <xs:complexType mixed="true">
+            <xs:sequence>
+              <xs:element ref="attribute" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="class" use="optional"/>
+            <xs:attribute type="xs:string" name="name" use="optional"/>
+            <xs:attribute type="xs:boolean" name="advanced" use="optional"/>
+            <xs:attribute type="xs:boolean" name="readonly" use="optional"/>
+            <xs:attribute type="xs:string" name="default" use="optional"/>
+            <xs:attribute type="xs:string" name="jsonid" use="optional"/>
+            <xs:attribute type="xs:boolean" name="holder" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:sequence>
+          <xs:element ref="attribute" minOccurs="0"/>
+        </xs:sequence>
+
+        <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="altName" type="xs:string" use="optional"/>
+            <xs:attribute name="value" type="xs:string" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="code" maxOccurs="1" minOccurs="0" type="xs:string"/>
+
+        <xs:element name="method">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="attribute" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="class"/>
+            <xs:attribute type="xs:string" name="name"/>
+            <xs:attribute type="xs:string" name="base"/>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="base" type="xs:string" use="optional"/>
+      <xs:attribute name="abstract" type="xs:boolean" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+
   <!-- Root Element -->
   <xs:element name="library">
     <xs:complexType>
@@ -35,59 +100,6 @@
           <xs:complexType>
             <xs:attribute name="public" type="xs:boolean" use="optional"/>
             <xs:attribute name="ifdef" type="xs:string" use="optional"/>
-          </xs:complexType>
-        </xs:element>
-
-        <!-- Class -->
-        <xs:element name="class" maxOccurs="unbounded" minOccurs="0">
-          <xs:complexType>
-            <xs:sequence>
-
-              <xs:element name="variable">
-                <xs:complexType mixed="true">
-                  <xs:sequence>
-                    <xs:element ref="attribute" minOccurs="0"/>
-                  </xs:sequence>
-                  <xs:attribute type="xs:string" name="class" use="optional"/>
-                  <xs:attribute type="xs:string" name="name" use="optional"/>
-                  <xs:attribute type="xs:boolean" name="advanced" use="optional"/>
-                  <xs:attribute type="xs:boolean" name="readonly" use="optional"/>
-                  <xs:attribute type="xs:string" name="default" use="optional"/>
-                  <xs:attribute type="xs:string" name="jsonid" use="optional"/>
-                  <xs:attribute type="xs:boolean" name="holder" use="optional"/>
-                </xs:complexType>
-              </xs:element>
-
-              <xs:sequence>
-                <xs:element ref="attribute" minOccurs="0"/>
-              </xs:sequence>
-
-              <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
-                <xs:complexType>
-                  <xs:attribute name="name" type="xs:string" use="required"/>
-                  <xs:attribute name="altName" type="xs:string" use="optional"/>
-                  <xs:attribute name="value" type="xs:string" use="optional"/>
-                </xs:complexType>
-              </xs:element>
-
-              <xs:element name="code" maxOccurs="1" minOccurs="0" type="xs:string"/>
-
-              <xs:element name="method">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element ref="attribute" maxOccurs="unbounded" minOccurs="0"/>
-                  </xs:sequence>
-                  <xs:attribute type="xs:string" name="class"/>
-                  <xs:attribute type="xs:string" name="name"/>
-                  <xs:attribute type="xs:string" name="base"/>
-                </xs:complexType>
-              </xs:element>
-
-            </xs:sequence>
-
-            <xs:attribute name="name" type="xs:string" use="required"/>
-            <xs:attribute name="base" type="xs:string" use="optional"/>
-            <xs:attribute name="abstract" type="xs:boolean" use="optional"/>
           </xs:complexType>
         </xs:element>
 
