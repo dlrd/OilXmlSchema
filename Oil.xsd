@@ -101,6 +101,9 @@
           </xs:complexType>
         </xs:element>
 
+        <!-- Class -->
+        <xs:element ref="class" maxOccurs="unbounded" minOccurs="0"/>
+
         <!-- Template -->
         <xs:element name="template">
           <xs:complexType mixed="true">
