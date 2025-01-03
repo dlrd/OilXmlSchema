@@ -43,9 +43,7 @@
           </xs:complexType>
         </xs:element>
 
-        <xs:sequence>
-          <xs:element ref="attribute" minOccurs="0"/>
-        </xs:sequence>
+        <xs:element ref="attribute" minOccurs="0"/>
 
         <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
           <xs:complexType>
@@ -82,9 +80,9 @@
     <xs:complexType>
       <xs:sequence>
 
-      <xs:element name="code" maxOccurs="1" minOccurs="0" type="xs:string"/>
+        <xs:element name="code" maxOccurs="1" minOccurs="0" type="xs:string"/>
 
-      <!-- Include -->
+        <!-- Include -->
         <xs:element name="include" maxOccurs="unbounded" minOccurs="0">
           <xs:complexType>
             <xs:attribute name="public" type="xs:boolean" use="optional"/>
