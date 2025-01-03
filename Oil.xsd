@@ -17,7 +17,6 @@
         <!-- Import -->
         <xs:element name="import" maxOccurs="unbounded" minOccurs="0">
           <xs:complexType>
-            <xs:attribute name="public" type="xs:string" use="required"/>
             <xs:attribute name="public" type="xs:boolean" use="optional"/>
             <xs:attribute name="ifdef" type="xs:string" use="optional"/>
           </xs:complexType>
@@ -37,11 +36,13 @@
                       </xs:complexType>
                     </xs:element>
                   </xs:sequence>
+                  <xs:attribute name="holder" type="xs:string" use="optional"/>
                   <xs:attribute name="class" type="xs:string" use="required"/>
                   <xs:attribute name="name" type="xs:string" use="required"/>
                   <xs:attribute name="advanced" type="xs:boolean" use="optional"/>
                   <xs:attribute name="readonly" type="xs:boolean" use="optional"/>
                   <xs:attribute name="default" type="xs:string" use="optional"/>
+                  <xs:attribute name="jsonid" type="xs:string" use="optional"/>
                 </xs:complexType>
               </xs:element>
               <xs:element name="attribute" maxOccurs="unbounded" minOccurs="0">
