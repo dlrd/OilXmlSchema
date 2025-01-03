@@ -27,94 +27,95 @@
   <xs:element name="class">
     <xs:complexType>
       <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
 
-        <xs:element name="variable">
-          <xs:complexType mixed="true">
-            <xs:sequence>
-              <xs:element ref="attribute" minOccurs="0"/>
-            </xs:sequence>
-            <xs:attribute type="xs:string" name="class" use="optional"/>
-            <xs:attribute type="xs:string" name="name" use="optional"/>
-            <xs:attribute type="xs:boolean" name="advanced" use="optional"/>
-            <xs:attribute type="xs:boolean" name="readonly" use="optional"/>
-            <xs:attribute type="xs:string" name="default" use="optional"/>
-            <xs:attribute type="xs:string" name="jsonid" use="optional"/>
-            <xs:attribute type="xs:boolean" name="holder" use="optional"/>
-          </xs:complexType>
-        </xs:element>
+          <xs:element name="variable">
+            <xs:complexType mixed="true">
+              <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="attribute" minOccurs="0"/>
+              </xs:sequence>
+              <xs:attribute type="xs:string" name="class" use="optional"/>
+              <xs:attribute type="xs:string" name="name" use="optional"/>
+              <xs:attribute type="xs:boolean" name="advanced" use="optional"/>
+              <xs:attribute type="xs:boolean" name="readonly" use="optional"/>
+              <xs:attribute type="xs:string" name="default" use="optional"/>
+              <xs:attribute type="xs:string" name="jsonid" use="optional"/>
+              <xs:attribute type="xs:boolean" name="holder" use="optional"/>
+            </xs:complexType>
+          </xs:element>
 
-        <xs:element ref="attribute" minOccurs="0"/>
+          <xs:element ref="attribute" minOccurs="0" maxOccurs="unbounded"/>
 
-        <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
-          <xs:complexType>
-            <xs:attribute name="name" type="xs:string" use="required"/>
-            <xs:attribute name="altName" type="xs:string" use="optional"/>
-            <xs:attribute name="value" type="xs:string" use="optional"/>
-          </xs:complexType>
-        </xs:element>
+          <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
+            <xs:complexType>
+              <xs:attribute name="name" type="xs:string" use="required"/>
+              <xs:attribute name="altName" type="xs:string" use="optional"/>
+              <xs:attribute name="value" type="xs:string" use="optional"/>
+            </xs:complexType>
+          </xs:element>
 
-        <xs:element name="code" maxOccurs="1" minOccurs="0" type="xs:string"/>
+          <xs:element name="code" maxOccurs="1" minOccurs="0" type="xs:string"/>
 
-        <xs:element name="method">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element ref="attribute" maxOccurs="unbounded" minOccurs="0"/>
-            </xs:sequence>
-            <xs:attribute type="xs:string" name="class"/>
-            <xs:attribute type="xs:string" name="name"/>
-            <xs:attribute type="xs:string" name="base"/>
-          </xs:complexType>
-        </xs:element>
+          <xs:element name="method">
+            <xs:complexType>
+              <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="attribute" maxOccurs="unbounded" minOccurs="0"/>
+              </xs:sequence>
+              <xs:attribute type="xs:string" name="class"/>
+              <xs:attribute type="xs:string" name="name"/>
+              <xs:attribute type="xs:string" name="base"/>
+            </xs:complexType>
+          </xs:element>
 
+        </xs:choice>
       </xs:sequence>
-
       <xs:attribute name="name" type="xs:string" use="required"/>
       <xs:attribute name="base" type="xs:string" use="optional"/>
       <xs:attribute name="abstract" type="xs:boolean" use="optional"/>
     </xs:complexType>
   </xs:element>
 
-
   <!-- Root Element -->
   <xs:element name="library">
     <xs:complexType>
       <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="code" maxOccurs="1" minOccurs="0" type="xs:string"/>
 
-        <xs:element name="code" maxOccurs="1" minOccurs="0" type="xs:string"/>
+          <!-- Include -->
+          <xs:element name="include" maxOccurs="unbounded" minOccurs="0">
+            <xs:complexType>
+              <xs:attribute name="public" type="xs:boolean" use="optional"/>
+              <xs:attribute name="fromApi" type="xs:boolean" use="optional"/>
+              <xs:attribute name="file" type="xs:string" use="required"/>
+            </xs:complexType>
+          </xs:element>
 
-        <!-- Include -->
-        <xs:element name="include" maxOccurs="unbounded" minOccurs="0">
-          <xs:complexType>
-            <xs:attribute name="public" type="xs:boolean" use="optional"/>
-            <xs:attribute name="fromApi" type="xs:boolean" use="optional"/>
-            <xs:attribute name="file" type="xs:string" use="required"/>
-          </xs:complexType>
-        </xs:element>
+          <!-- Import -->
+          <xs:element name="import" maxOccurs="unbounded" minOccurs="0">
+            <xs:complexType>
+              <xs:attribute name="public" type="xs:boolean" use="optional"/>
+              <xs:attribute name="ifdef" type="xs:string" use="optional"/>
+            </xs:complexType>
+          </xs:element>
 
-        <!-- Import -->
-        <xs:element name="import" maxOccurs="unbounded" minOccurs="0">
-          <xs:complexType>
-            <xs:attribute name="public" type="xs:boolean" use="optional"/>
-            <xs:attribute name="ifdef" type="xs:string" use="optional"/>
-          </xs:complexType>
-        </xs:element>
+          <!-- Class -->
+          <xs:element ref="class" maxOccurs="unbounded" minOccurs="0"/>
 
-        <!-- Class -->
-        <xs:element ref="class" maxOccurs="unbounded" minOccurs="0"/>
+          <!-- Template -->
+          <xs:element name="template">
+            <xs:complexType mixed="true">
+              <xs:sequence minOccurs="0">
+                <xs:element ref="template-parameter" minOccurs="0"/>
+                <xs:element ref="class" minOccurs="0"/>
+              </xs:sequence>
+              <xs:attribute type="xs:string" name="name" use="optional"/>
+              <xs:attribute type="xs:string" name="base" use="optional"/>
+              <xs:attribute type="xs:string" name="abstract" use="optional"/>
+            </xs:complexType>
+          </xs:element>
 
-        <!-- Template -->
-        <xs:element name="template">
-          <xs:complexType mixed="true">
-            <xs:sequence>
-              <xs:element ref="template-parameter" minOccurs="0"/>
-              <xs:element ref="class" minOccurs="0"/>
-            </xs:sequence>
-            <xs:attribute type="xs:string" name="name" use="optional"/>
-            <xs:attribute type="xs:string" name="base" use="optional"/>
-            <xs:attribute type="xs:string" name="abstract" use="optional"/>
-          </xs:complexType>
-        </xs:element>
-
+        </xs:choice>
       </xs:sequence>
       <xs:attribute type="xs:string" name="export"/>
       <xs:attribute type="xs:string" name="namespace"/>
