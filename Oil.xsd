@@ -17,6 +17,7 @@
         <!-- Import -->
         <xs:element name="import" maxOccurs="unbounded" minOccurs="0">
           <xs:complexType>
+            <xs:attribute name="public" type="xs:string" use="required"/>
             <xs:attribute name="public" type="xs:boolean" use="optional"/>
             <xs:attribute name="ifdef" type="xs:string" use="optional"/>
           </xs:complexType>
