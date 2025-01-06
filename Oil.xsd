@@ -36,6 +36,7 @@
               </xs:sequence>
               <xs:attribute type="xs:string" name="class" use="optional"/>
               <xs:attribute type="xs:string" name="name" use="optional"/>
+              <xs:attribute type="xs:string" name="impl" use="optional"/>
               <xs:attribute type="xs:boolean" name="advanced" use="optional"/>
               <xs:attribute type="xs:boolean" name="readonly" use="optional"/>
               <xs:attribute type="xs:string" name="default" use="optional"/>
@@ -108,8 +109,8 @@
           <xs:element name="template">
             <xs:complexType mixed="true">
               <xs:sequence minOccurs="0">
-                <xs:element ref="template-parameter" minOccurs="0"/>
-                <xs:element ref="class" minOccurs="0"/>
+                <xs:element ref="template-parameter" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="class" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
               <xs:attribute type="xs:string" name="name" use="optional"/>
               <xs:attribute type="xs:string" name="base" use="optional"/>
