@@ -97,6 +97,7 @@
             <xs:complexType>
               <xs:attribute name="public" type="xs:boolean" use="optional"/>
               <xs:attribute name="ifdef" type="xs:string" use="optional"/>
+              <xs:attribute name="library" type="xs:string" use="required"/>
             </xs:complexType>
           </xs:element>
 
