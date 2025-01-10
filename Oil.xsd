@@ -119,7 +119,7 @@
           </xs:element>
 
           <!-- Generator (Special case for Enumeration) -->
-          <xs:element name="generator"/>
+          <xs:element name="generator" maxOccurs="unbounded" minOccurs="0"/>
 
         </xs:choice>
       </xs:sequence>
