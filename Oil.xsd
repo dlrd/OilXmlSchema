@@ -42,7 +42,6 @@
               <xs:attribute type="xs:string" name="default" use="optional"/>
               <xs:attribute type="xs:string" name="jsonid" use="optional"/>
               <xs:attribute type="xs:boolean" name="holder" use="optional"/>
-              <xs:attribute type="xs:string" name="generated" use="optional" fixed="cpp"/>
             </xs:complexType>
           </xs:element>
 
@@ -74,6 +73,7 @@
       <xs:attribute name="name" type="xs:string" use="required"/>
       <xs:attribute name="base" type="xs:string" use="optional"/>
       <xs:attribute name="abstract" type="xs:boolean" use="optional"/>
+      <xs:attribute type="xs:string" name="generated" use="optional" fixed="cpp"/>
     </xs:complexType>
   </xs:element>
 
