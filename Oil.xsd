@@ -42,6 +42,7 @@
               <xs:attribute type="xs:string" name="default" use="optional"/>
               <xs:attribute type="xs:string" name="jsonid" use="optional"/>
               <xs:attribute type="xs:boolean" name="holder" use="optional"/>
+              <xs:attribute type="xs:string" name="impl" use="optional"/>
             </xs:complexType>
           </xs:element>
 
@@ -110,6 +111,7 @@
             <xs:complexType mixed="true">
               <xs:sequence minOccurs="0">
                 <xs:element ref="template-parameter" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element name="template-functor"  minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="class" minOccurs="0" maxOccurs="unbounded"/>
               </xs:sequence>
               <xs:attribute type="xs:string" name="name" use="optional"/>
