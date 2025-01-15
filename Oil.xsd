@@ -126,6 +126,8 @@
           <!-- Generator (Special case for Enumeration) -->
           <xs:element name="generator" maxOccurs="unbounded" minOccurs="0"/>
 
+          <!-- AutoDeclaredSingletons -->
+          <xs:element name="autoDeclaredSingletons" maxOccurs="unbounded" minOccurs="0"/>
         </xs:choice>
       </xs:sequence>
       <xs:attribute type="xs:string" name="export"/>
