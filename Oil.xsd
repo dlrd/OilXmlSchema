@@ -106,7 +106,7 @@
           <!-- Template -->
           <xs:element name="template">
             <xs:complexType mixed="true">
-              <xs:sequence minOccurs="0">
+              <xs:sequence minOccurs="0" maxOccurs="unbounded">
                 <xs:element ref="template-parameter" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element name="template-functor"  minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="class" minOccurs="0" maxOccurs="unbounded"/>
