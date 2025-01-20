@@ -12,6 +12,7 @@
           <xs:attribute type="xs:string" name="statefile" use="optional"/>
           <xs:attribute type="xs:string" name="binaryfile" use="optional"/>
           <xs:attribute type="xs:string" name="state" use="optional"/>
+          <xs:attribute name="ifdef" type="xs:string" use="optional"/>
         </xs:extension>
       </xs:simpleContent>
     </xs:complexType>
@@ -89,6 +90,7 @@
       <xs:attribute name="base" type="xs:string" use="optional"/>
       <xs:attribute name="abstract" type="xs:boolean" use="optional"/>
       <xs:attribute type="xs:string" name="generated" use="optional" fixed="cpp"/>
+      <xs:attribute type="xs:string" name="version" use="optional"/>
     </xs:complexType>
   </xs:element>
 
@@ -114,6 +116,7 @@
               <xs:attribute name="public" type="xs:boolean" use="optional"/>
               <xs:attribute name="ifdef" type="xs:string" use="optional"/>
               <xs:attribute name="library" type="xs:string" use="required"/>
+              <xs:attribute name="namespace" type="xs:string" use="optional"/>
             </xs:complexType>
           </xs:element>
 
