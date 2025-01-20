@@ -153,6 +153,13 @@
 
           <!-- AutoDeclaredSingletons -->
           <xs:element name="autoDeclaredSingletons" maxOccurs="unbounded" minOccurs="0"/>
+
+          <!-- description for plugin -->
+          <xs:element name="description" maxOccurs="1" minOccurs="0"/>
+
+          <!-- startProgram for executable -->
+          <xs:element name="startProgram" maxOccurs="1" minOccurs="0"/>
+
         </xs:choice>
       </xs:sequence>
       <xs:attribute type="xs:string" name="export"/>
