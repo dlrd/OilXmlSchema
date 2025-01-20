@@ -10,6 +10,7 @@
           <xs:attribute type="xs:string" name="variable" use="optional"/>
           <xs:attribute type="xs:string" name="stringfile" use="optional"/>
           <xs:attribute type="xs:string" name="statefile" use="optional"/>
+          <xs:attribute type="xs:string" name="binaryfile" use="optional"/>
           <xs:attribute type="xs:string" name="state" use="optional"/>
         </xs:extension>
       </xs:simpleContent>
@@ -45,6 +46,7 @@
       <xs:attribute type="xs:string" name="default" use="optional"/>
       <xs:attribute type="xs:string" name="jsonid" use="optional"/>
       <xs:attribute type="xs:boolean" name="holder" use="optional"/>
+      <xs:attribute type="xs:boolean" name="propagateChildrenChanges" use="optional"/>
     </xs:complexType>
   </xs:element>
 
