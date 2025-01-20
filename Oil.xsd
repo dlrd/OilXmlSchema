@@ -62,6 +62,8 @@
               <xs:attribute name="name" type="xs:string" use="required"/>
               <xs:attribute name="altName" type="xs:string" use="optional"/>
               <xs:attribute name="value" type="xs:string" use="optional"/>
+              <xs::attribute name="description" type="xs:string" use="optional"/>
+
             </xs:complexType>
           </xs:element>
 
@@ -144,6 +146,7 @@
       <xs:attribute type="xs:string" name="export"/>
       <xs:attribute type="xs:string" name="namespace"/>
       <xs:attribute type="xs:boolean" name="plugin"/>
+      <xs:attribute type="xs:boolean" name="precompiledHeader"/>
     </xs:complexType>
   </xs:element>
 </xs:schema>
