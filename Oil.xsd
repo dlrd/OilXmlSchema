@@ -112,6 +112,7 @@
       <xs:attribute type="xs:string" name="ifdef" use="optional"/>
       <xs:attribute type="xs:string" name="ifndef" use="optional"/>
       <xs:attribute type="xs:string" name="if" use="optional"/>
+      <xs:attribute type="xs:string" name="metaclass" use="optional"/>  <!--for internal usage only-->
       <xs:attribute type="xs:string" name="nativetype" use="optional"/> <!--for Enumeration only-->
     </xs:complexType>
   </xs:element>
