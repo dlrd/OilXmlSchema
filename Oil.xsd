@@ -88,6 +88,14 @@
             </xs:complexType>
           </xs:element>
 
+          <xs:element name="importVariables" minOccurs="0" maxOccurs="1">
+            <xs:complexType mixed="true">
+              <xs:attribute type="xs:string" name="accessor"/>
+              <xs:attribute type="xs:string" name="first"/>
+              <xs:attribute type="xs:string" name="count"/>
+            </xs:complexType>
+          </xs:element>
+
         </xs:choice>
       </xs:sequence>
       <xs:attribute type="xs:string" name="name" use="optional"/>
@@ -100,6 +108,7 @@
       <xs:attribute type="xs:string" name="ifdef" use="optional"/>
       <xs:attribute type="xs:string" name="ifndef" use="optional"/>
       <xs:attribute type="xs:string" name="if" use="optional"/>
+      <xs:attribute type="xs:string" name="nativetype" use="optional"/> <!--for Enumeration only-->
     </xs:complexType>
   </xs:element>
 
