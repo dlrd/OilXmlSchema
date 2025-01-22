@@ -45,6 +45,12 @@
     </xs:complexType>
   </xs:element>
 
+  <xs:element name="description">
+    <xs:complexType mixed="true">
+      <xs:attribute type="xs:string" name="language" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
   <!-- Class -->
   <xs:element name="class">
     <xs:complexType mixed="true">
@@ -57,9 +63,7 @@
           <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
             <xs:complexType mixed="true">
               <xs:sequence minOccurs="0" maxOccurs="1">
-                <xs:element name="description" maxOccurs="1" minOccurs="0">
-                  <xs:complexType mixed="true"/>
-                </xs:element>
+                <xs:element ref="description" maxOccurs="1" minOccurs="0"/>
               </xs:sequence>
               <xs:attribute type="xs:string" name="name" use="required"/>
               <xs:attribute type="xs:string" name="altName" use="optional"/>
@@ -155,10 +159,14 @@
   <xs:element name="library">
     <xs:complexType mixed="true">
       <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element ref="include" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="import" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="class" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="template" maxOccurs="unbounded" minOccurs="0"/>
+
+          <!-- description for plugin -->
+          <xs:element ref="description" maxOccurs="1" minOccurs="0"/>
 
           <!-- Code -->
           <xs:element type="xs:string" name="code" maxOccurs="1" minOccurs="0"/>
@@ -172,11 +180,9 @@
           <!-- classPredeclaration -->
           <xs:element name="classPredeclaration" maxOccurs="unbounded" minOccurs="0"/>
 
-          <!-- description for plugin -->
-          <xs:element name="description" maxOccurs="1" minOccurs="0"/>
-
           <!-- startProgram for executable -->
           <xs:element name="startProgram" maxOccurs="1" minOccurs="0"/>
+        </xs:choice>
       </xs:sequence>
       
       <xs:attribute type="xs:string" name="export" use="optional"/>
