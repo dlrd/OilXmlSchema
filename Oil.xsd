@@ -172,6 +172,52 @@
       <xs:attribute type="xs:string" name="namespace" use="optional"/>
     </xs:complexType>
   </xs:element>
+
+  <!-- Generator (Special case for Enumeration) -->
+  <xs:element name="generator">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="name" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- AutoDeclaredSingletons -->
+  <xs:element name="autoDeclaredSingletons">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="name" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- class Predeclaration -->
+  <xs:element name="classPredeclaration">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="name" use="required"/>
+          <xs:attribute type="xs:boolean" name="public" use="optional"/>
+          <xs:attribute type="xs:string" name="oilClassFromApi" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- class Predeclaration -->
+  <xs:element name="startProgram">
+    <xs:complexType mixed="true">
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attribute type="xs:string" name="class" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
   
   <!-- Root Element library -->
   <xs:element name="library">
@@ -182,24 +228,19 @@
           <xs:element ref="import" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="class" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="template" maxOccurs="unbounded" minOccurs="0"/>
+          <xs:element ref="generator" maxOccurs="unbounded" minOccurs="0"/>
+          <xs:element ref="autoDeclaredSingletons" maxOccurs="unbounded" minOccurs="0"/>
+          <xs:element ref="classPredeclaration" maxOccurs="unbounded" minOccurs="0"/>
 
+          <!-- startProgram for executable -->
+          <xs:element ref="startProgram" maxOccurs="1" minOccurs="0"/>
+          
           <!-- description for plugin -->
           <xs:element ref="description" maxOccurs="1" minOccurs="0"/>
 
           <!-- Code -->
           <xs:element type="xs:string" name="code" maxOccurs="1" minOccurs="0"/>
-
-          <!-- Generator (Special case for Enumeration) -->
-          <xs:element name="generator" maxOccurs="unbounded" minOccurs="0"/>
-
-          <!-- AutoDeclaredSingletons -->
-          <xs:element name="autoDeclaredSingletons" maxOccurs="unbounded" minOccurs="0"/>
-
-          <!-- classPredeclaration -->
-          <xs:element name="classPredeclaration" maxOccurs="unbounded" minOccurs="0"/>
-
-          <!-- startProgram for executable -->
-          <xs:element name="startProgram" maxOccurs="1" minOccurs="0"/>
+          
         </xs:choice>
       </xs:sequence>
       
