@@ -10,7 +10,7 @@
 
   <!-- Attribute -->
   <xs:element name="attribute">
-    <xs:complexType>
+    <xs:complexType mixed="true"> <!-- alwayse use mixed="true" for complexType allowing user do jume line and indent with white spaces -->
       <xs:simpleContent>
         <xs:extension base="xs:string">
           <xs:attribute type="xs:string" name="name" use="required"/>
@@ -26,22 +26,6 @@
       </xs:simpleContent>
     </xs:complexType>
   </xs:element>
-
-  <!-- Template Parameter -->
-  <xs:element name="template-parameter">
-    <xs:complexType mixed="true">
-        <xs:attribute type="xs:string" name="name" use="optional"/>
-        <xs:attribute type="xs:string" name="inheritsFrom" use="optional"/>
-    </xs:complexType>
-  </xs:element>
-
-  <!-- Template Functor -->
-  <xs:element name="template-functor">
-    <xs:complexType mixed="true">
-        <xs:attribute type="xs:string" name="name" use="optional"/>
-    </xs:complexType>
-  </xs:element>
-
 
   <!-- Variable -->
   <xs:element name="variable">
@@ -62,7 +46,7 @@
 
   <!-- Class -->
   <xs:element name="class">
-    <xs:complexType>
+    <xs:complexType mixed="true">
       <xs:sequence>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
 
@@ -70,7 +54,7 @@
           <xs:element ref="attribute" minOccurs="0" maxOccurs="unbounded"/>
 
           <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
-            <xs:complexType>
+            <xs:complexType mixed="true">
               <xs:attribute type="xs:string" name="name" use="required"/>
               <xs:attribute type="xs:string" name="altName" use="optional"/>
               <xs:attribute type="xs:string" name="value" use="optional"/>
@@ -81,7 +65,7 @@
           <xs:element name="code" maxOccurs="1" minOccurs="0" type="xs:string"/>
 
           <xs:element name="method">
-            <xs:complexType>
+            <xs:complexType mixed="true">
               <xs:sequence minOccurs="0" maxOccurs="unbounded">
                 <xs:element ref="attribute" maxOccurs="unbounded" minOccurs="0"/>
               </xs:sequence>
@@ -106,57 +90,75 @@
     </xs:complexType>
   </xs:element>
 
-  <!-- Root Element -->
+
+  <!-- Template Parameter -->
+  <xs:element name="template-parameter">
+    <xs:complexType mixed="true">
+      <xs:attribute type="xs:string" name="name" use="optional"/>
+      <xs:attribute type="xs:string" name="inheritsFrom" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Template Functor -->
+  <xs:element name="template-functor">
+    <xs:complexType mixed="true">
+      <xs:attribute type="xs:string" name="name" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Template -->
+  <xs:element name="template">
+    <xs:complexType mixed="true">
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="template-parameter" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="template-functor"  minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="class" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="variable" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="attribute" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="name" use="optional"/>
+      <xs:attribute type="xs:string" name="base" use="optional"/>
+      <xs:attribute type="xs:string" name="abstract" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <!-- Include -->
+  <xs:element name="include">
+    <xs:complexType mixed="true">
+      <xs:attribute type="xs:string" name="file"     use="required"/>
+      <xs:attribute type="xs:boolean" name="public"  use="optional"/>
+      <xs:attribute type="xs:boolean" name="fromApi" use="optional"/>
+      <xs:attribute type="xs:string" name="ifdef"    use="optional"/>
+      <xs:attribute type="xs:string" name="ifndef"   use="optional"/>
+      <xs:attribute type="xs:string" name="if"       use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- Import -->
+  <xs:element name="import">
+    <xs:complexType mixed="true">
+      <xs:attribute type="xs:string" name="library"   use="required"/>
+      <xs:attribute type="xs:boolean" name="public"   use="optional"/>
+      <xs:attribute type="xs:string" name="ifdef"     use="optional"/>
+      <xs:attribute type="xs:string" name="ifndef"    use="optional"/>
+      <xs:attribute type="xs:string" name="if"        use="optional"/>
+      <xs:attribute type="xs:string" name="namespace" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <!-- Root Element library -->
   <xs:element name="library">
-    <xs:complexType>
+    <xs:complexType mixed="true">
       <xs:sequence>
         <xs:choice minOccurs="0" maxOccurs="unbounded">
           <xs:element name="code" maxOccurs="1" minOccurs="0" type="xs:string"/>
 
-          <!-- Include -->
-          <xs:element name="include" maxOccurs="unbounded" minOccurs="0">
-            <xs:complexType>
-              <xs:attribute type="xs:string" name="file"     use="required"/>
-              <xs:attribute type="xs:boolean" name="public"  use="optional"/>
-              <xs:attribute type="xs:boolean" name="fromApi" use="optional"/>
-              <xs:attribute type="xs:string" name="ifdef"    use="optional"/>
-              <xs:attribute type="xs:string" name="ifndef"   use="optional"/>
-              <xs:attribute type="xs:string" name="if"       use="optional"/>
-            </xs:complexType>
-          </xs:element>
-
-          <!-- Import -->
-          <xs:element name="import" maxOccurs="unbounded" minOccurs="0">
-            <xs:complexType>
-              <xs:attribute type="xs:string" name="library"   use="required"/>
-              <xs:attribute type="xs:boolean" name="public"   use="optional"/>
-              <xs:attribute type="xs:string" name="ifdef"     use="optional"/>
-              <xs:attribute type="xs:string" name="ifndef"    use="optional"/>
-              <xs:attribute type="xs:string" name="if"        use="optional"/>
-              <xs:attribute type="xs:string" name="namespace" use="optional"/>
-            </xs:complexType>
-          </xs:element>
-
-          <!-- Class -->
+          <xs:element ref="include" maxOccurs="unbounded" minOccurs="0"/>
+          <xs:element ref="import" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="class" maxOccurs="unbounded" minOccurs="0"/>
-
-          <!-- Template -->
-          <xs:element name="template">
-            <xs:complexType mixed="true">
-              <xs:sequence minOccurs="0" maxOccurs="unbounded">
-                <xs:element ref="template-parameter" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="template-functor"  minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="class" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:element ref="variable" minOccurs="0" maxOccurs="unbounded"/>
-                <xs:sequence minOccurs="0" maxOccurs="unbounded">
-                  <xs:element ref="attribute" maxOccurs="unbounded" minOccurs="0"/>
-                </xs:sequence>
-              </xs:sequence>
-              <xs:attribute type="xs:string" name="name" use="optional"/>
-              <xs:attribute type="xs:string" name="base" use="optional"/>
-              <xs:attribute type="xs:string" name="abstract" use="optional"/>
-            </xs:complexType>
-          </xs:element>
+          <xs:element ref="template" maxOccurs="unbounded" minOccurs="0"/>
 
           <!-- Generator (Special case for Enumeration) -->
           <xs:element name="generator" maxOccurs="unbounded" minOccurs="0"/>
@@ -172,10 +174,10 @@
 
         </xs:choice>
       </xs:sequence>
-      <xs:attribute type="xs:string" name="export"/>
-      <xs:attribute type="xs:string" name="namespace"/>
-      <xs:attribute type="xs:boolean" name="plugin"/>
-      <xs:attribute type="xs:boolean" name="precompiledHeader"/>
+      <xs:attribute type="xs:string" name="export" use="optional"/>
+      <xs:attribute type="xs:string" name="namespace" use="optional"/>
+      <xs:attribute type="xs:boolean" name="plugin" use="optional"/>
+      <xs:attribute type="xs:boolean" name="precompiledHeader" use="optional"/>
     </xs:complexType>
   </xs:element>
 </xs:schema>
