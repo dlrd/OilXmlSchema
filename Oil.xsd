@@ -208,17 +208,6 @@
     </xs:complexType>
   </xs:element>
 
-  <!-- class Predeclaration -->
-  <xs:element name="startProgram">
-    <xs:complexType mixed="true">
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute type="xs:string" name="class" use="required"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-  
   <!-- Root Element library -->
   <xs:element name="library">
     <xs:complexType mixed="true">
@@ -231,9 +220,6 @@
           <xs:element ref="generator" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="autoDeclaredSingletons" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="classPredeclaration" maxOccurs="unbounded" minOccurs="0"/>
-
-          <!-- startProgram for executable -->
-          <xs:element ref="startProgram" maxOccurs="1" minOccurs="0"/>
           
           <!-- description for plugin -->
           <xs:element ref="description" maxOccurs="1" minOccurs="0"/>
@@ -246,6 +232,7 @@
       
       <xs:attribute type="xs:string" name="export" use="optional"/>
       <xs:attribute type="xs:string" name="namespace" use="optional"/>
+      <xs:attribute type="xs:string" name="programClass" use="optional"/>
       <xs:attribute type="xs:boolean" name="plugin" use="optional"/>
       <xs:attribute type="xs:boolean" name="precompiledHeader" use="optional"/>
     </xs:complexType>
