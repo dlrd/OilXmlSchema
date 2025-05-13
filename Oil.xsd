@@ -224,9 +224,6 @@
           <xs:element ref="autoDeclaredSingletons" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="classPredeclaration" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="export" maxOccurs="unbounded" minOccurs="0"/>
-          
-          <!-- description for plugin -->
-          <xs:element ref="description" maxOccurs="1" minOccurs="0"/>
 
           <!-- Code -->
           <xs:element type="xs:string" name="code" maxOccurs="1" minOccurs="0"/>
