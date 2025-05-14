@@ -45,16 +45,6 @@
     </xs:complexType>
   </xs:element>
 
-  <xs:element name="description">
-    <xs:complexType mixed="true">
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute type="xs:string" name="language" use="required" fixed="us-en"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-
   <!-- Class -->
   <xs:element name="class">
     <xs:complexType mixed="true">
@@ -66,10 +56,8 @@
 
           <xs:element name="element" maxOccurs="unbounded" minOccurs="0">
             <xs:complexType mixed="true">
-              <xs:sequence minOccurs="0" maxOccurs="1">
-                <xs:element ref="description" maxOccurs="1" minOccurs="0"/>
-              </xs:sequence>
               <xs:attribute type="xs:string" name="name" use="required"/>
+              <xs:attribute type="xs:string" name="friendlyName" use="optional"/>
               <xs:attribute type="xs:string" name="alias" use="optional"/>
               <xs:attribute type="xs:string" name="value" use="optional"/>
             </xs:complexType>
