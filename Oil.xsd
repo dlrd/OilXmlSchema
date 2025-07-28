@@ -153,17 +153,6 @@
     </xs:complexType>
   </xs:element>
 
-  <!-- classGenerator (Special case for Enumeration) -->
-  <xs:element name="classGenerator">
-    <xs:complexType mixed="true">
-      <xs:simpleContent>
-        <xs:extension base="xs:string">
-          <xs:attribute type="xs:string" name="name" use="required"/>
-        </xs:extension>
-      </xs:simpleContent>
-    </xs:complexType>
-  </xs:element>
-
   <!-- AutoDeclaredSingletons -->
   <xs:element name="autoDeclaredSingletons">
     <xs:complexType mixed="true">
@@ -208,7 +197,6 @@
           <xs:element ref="import" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="class" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="template" maxOccurs="unbounded" minOccurs="0"/>
-          <xs:element ref="classGenerator" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="autoDeclaredSingletons" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="classPredeclaration" maxOccurs="unbounded" minOccurs="0"/>
           <xs:element ref="export" maxOccurs="unbounded" minOccurs="0"/>
