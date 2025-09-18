@@ -206,7 +206,7 @@
       <xs:attribute type="xs:string"  name="api"               use="optional"/>
       <xs:attribute type="xs:string"  name="namespace"         use="optional"/>
       <xs:attribute type="xs:string"  name="programClass"      use="optional"/>
-      <xs:attribute type="xs:boolean" name="plugin"            use="optional"/>
+      <xs:attribute type="xs:string"  name="inheritsFrom"      use="optional"/>
       <xs:attribute type="xs:boolean" name="precompiledHeader" use="optional"/>
     </xs:complexType>
   </xs:element>
