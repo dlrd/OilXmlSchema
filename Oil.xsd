@@ -66,7 +66,7 @@
 
           <xs:element ref="variable"  minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="attribute" minOccurs="0" maxOccurs="unbounded"/>
-          <xs:element name="element"  minOccurs="0" maxOccurs="unbounded"/> <!--for Enumeration only-->
+          <xs:element ref="element"   minOccurs="0" maxOccurs="unbounded"/> <!--for Enumeration only-->
       
           <xs:element name="code"   minOccurs="0" maxOccurs="1" type="xs:string"/>
           
