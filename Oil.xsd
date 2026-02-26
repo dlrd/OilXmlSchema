@@ -31,7 +31,7 @@
   <xs:element name="variable">
     <xs:complexType mixed="true">
       <xs:sequence minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="attribute" minOccurs="0"/>
+        <xs:element ref="attribute" minOccurs="0"  maxOccurs="unbounded"/>
       </xs:sequence>
       <xs:attribute type="xs:string"  name="class"                    use="required"/>
       <xs:attribute type="xs:string"  name="name"                     use="required"/>
@@ -44,6 +44,21 @@
       <xs:attribute type="xs:boolean" name="propagateChildrenChanges" use="optional"/>
     </xs:complexType>
   </xs:element>
+  
+  <!-- Enumeration Element -->
+  <xs:element name="element">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="attribute" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute type="xs:string" name="name"         use="required"/>
+      <xs:attribute type="xs:string" name="friendlyName" use="optional"/>
+      <xs:attribute type="xs:string" name="alias"        use="optional"/>
+      <xs:attribute type="xs:string" name="value"        use="optional"/>
+    </xs:complexType>
+  </xs:element>
 
   <!-- Class -->
   <xs:element name="class">
@@ -53,24 +68,16 @@
 
           <xs:element ref="variable"  minOccurs="0" maxOccurs="unbounded"/>
           <xs:element ref="attribute" minOccurs="0" maxOccurs="unbounded"/>
-
-          <xs:element name="element"  minOccurs="0" maxOccurs="unbounded">
-            <xs:complexType mixed="true">
-              <xs:attribute type="xs:string" name="name"         use="required"/>
-              <xs:attribute type="xs:string" name="friendlyName" use="optional"/>
-              <xs:attribute type="xs:string" name="alias"        use="optional"/>
-              <xs:attribute type="xs:string" name="value"        use="optional"/>
-            </xs:complexType>
-          </xs:element>
-          
+          <xs:element name="element"  minOccurs="0" maxOccurs="unbounded"/> <!--for Enumeration only-->
+      
           <xs:element name="code"   minOccurs="0" maxOccurs="1" type="xs:string"/>
           
           <xs:element name="method" minOccurs="0" maxOccurs="unbounded">
             <xs:complexType mixed="true">
               <xs:sequence>
                 <xs:choice minOccurs="0" maxOccurs="unbounded">
-                  <xs:element ref="attribute" maxOccurs="unbounded" minOccurs="0"/>
-                  <xs:element ref="variable"  maxOccurs="unbounded" minOccurs="0"/>
+                  <xs:element ref="attribute" minOccurs="0" maxOccurs="unbounded"/>
+                  <xs:element ref="variable"  minOccurs="0" maxOccurs="unbounded"/>
                 </xs:choice>
                 </xs:sequence>
               <xs:attribute type="xs:string" name="class" use="optional"/>
